@@ -51,3 +51,26 @@ for index_image_moyenne = 400:10:800
     cell_images_moyenne{index_cell_images} = M_images;
 end
 
+% calculer la valeur moyenne num¨¦rique dans un r¨¦gion de chaque 
+% image correspondant ¨¤ chaque longeur d'onde
+valeur_numerique_matrix = zeros(41,1);
+for index_value = 1:41
+    image = cell2mat(cell_images_moyenne(index_value));
+    % concentrer sur une r¨¦gion centrale d'image
+    image_region = image(512-74:512+75, 640-74:640+75);
+    % calculer la valeur num¨¦rique moyenne
+    valeur_numerique_moyenne = mean(image_region(:));
+    valeur_numerique_matrix(index_value) = valeur_numerique_moyenne;
+end
+
+% calculer la r¨¦ponse spectrale du cam¨¦ra en divisant la valeur num¨¦rique
+% par la puissance lumineuse
+valeur_reponse_spectrale = valeur_numerique_matrix ./ vecteur_puissance_lumineuse;
+figure(2)
+plot(vecteur_longugeur_onde, valeur_reponse_spectrale,'rx')
+grid on 
+title("la r¨¦ponse spectrale de la cam¨¦ra")
+xlabel("la longueur d'onde (nm)")
+ylabel("la r¨¦ponse en Valeur num¨¦rique par Watt")
+
+

@@ -1,8 +1,8 @@
 function cell_images = read_images(filepath)
     % fuction used to read all the bmp images in one folder
-    % parameter : filepath : the path of the folder
-    % return : a cell d'images pour toutes les images dans un même
-    % répèretoire
+    % parameter : 
+    
+    % return : a cell of images 
     img_path_list = dir(strcat(filepath,'*bmp'));
     img_num = length(img_path_list);
     

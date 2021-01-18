@@ -45,9 +45,7 @@ for index_image_moyenne = 400:10:800
     % cell
     cell_images = read_images(images_path); 
     % calculer la moyenne d'images correpondant ид chaque longueur d'onde
-    M_images = image_moyenne(cell_images);
-    index_cell_images = int8((index_image_moyenne - 400)/10 + 1);
-    % sauvegarder les images moyennes dans un cell
-    cell_images_moyenne{index_cell_images} = M_images;
+    
+    
 end
 
